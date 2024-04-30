@@ -1,0 +1,1 @@
+https://geoservicos.pbh.gov.br/geoserver/wfs?service=WFS&version=1.0.0&request=GetFeature&typeName=ide_bhgeo:BAIRRO_OFICIAL&srsName=EPSG:31983&outputFormat=SHAPE-ZIP
