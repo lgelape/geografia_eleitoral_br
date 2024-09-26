@@ -122,8 +122,9 @@ saveRDS(nikolas_2020_bh, "dados/nikolas_2020_bh_lv.rds")
 ##### Uniao de dados nao-espaciais: indice de Gini
 
 ### Tabela de IDs TSE-IBGE
-ids_ibge <- read_csv2("http://cepespdata.io/static/docs/cod_municipios.csv",
-                      col_types = c("cccccc")) |>
+ids_ibge <- read_csv(
+  "https://raw.githubusercontent.com/GV-CEPESP/cepespdata/refs/heads/main/tabelas_auxiliares/dados/codigo_municipio_ibge_tse.csv",
+  col_types = c("cccccccccccc")) |>
   select(UF, COD_MUN_TSE, COD_MUN_IBGE) |>
   distinct()
 

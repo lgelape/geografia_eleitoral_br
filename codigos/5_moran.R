@@ -16,8 +16,9 @@ library(ggplot2)
 ################################################################################
 
 # Tabela auxiliar de codigos
-ids_ibge <- read_csv2("http://cepespdata.io/static/docs/cod_municipios.csv",
-                      col_types = c("cccccc")) |>
+ids_ibge <- read_csv(
+  "https://raw.githubusercontent.com/GV-CEPESP/cepespdata/refs/heads/main/tabelas_auxiliares/dados/codigo_municipio_ibge_tse.csv",
+  col_types = c("cccccccccccc")) |>
   select(UF, COD_MUN_TSE, COD_MUN_IBGE) |>
   distinct()
 
@@ -117,9 +118,18 @@ municipios_lula |>
     values = c("#FF0000", "#F08080", "#0000FF", "#87CEEB", "#D3D3D3"),
     drop = FALSE) +
   theme_void() +
+  labs(
+    title = "LISA da votação de Lula (1º turno, 2022)",
+    subtitle = "(em % de válidos)",
+    caption = "Fonte: produzido por Gelape e Silva,\na partir de dados do TSE e do IBGE."
+  ) +
   guides(fill = guide_legend(title = "LISA", nrow = 2)) +
-  theme(legend.position = "bottom",
-        legend.direction = "horizontal")
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 14),
+    plot.subtitle = element_text(hjust = 0.5, size = 14),
+    plot.caption = element_text(hjust = 0.5, size = 10),
+    legend.position = "bottom",
+    legend.direction = "horizontal")
 
 ggsave("imagens/lula_2022_moranlocal.jpg", width = 6, height = 7)
 

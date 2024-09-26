@@ -132,9 +132,9 @@ hcql_deputados_ms22 <- HC_QL(ms_depfed_2022,
 ##### Visualizacao: Camila Jara (PT-MS)
 
 # Tabela de IDs TSE-IBGE
-ids_ibge <- read_csv2("http://cepespdata.io/static/docs/cod_municipios.csv",
-                      col_types = c("cccccc")) |>
-  # Mantemos somente essas 3 colunas
+ids_ibge <- read_csv(
+  "https://raw.githubusercontent.com/GV-CEPESP/cepespdata/refs/heads/main/tabelas_auxiliares/dados/codigo_municipio_ibge_tse.csv",
+  col_types = c("cccccccccccc")) |>
   select(UF, COD_MUN_TSE, COD_MUN_IBGE) |>
   distinct()
 

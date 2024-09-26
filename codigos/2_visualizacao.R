@@ -16,8 +16,9 @@ library(ggspatial)
 library(classInt)
 
 # Tabela de IDs TSE-IBGE
-ids_ibge <- read_csv2("http://cepespdata.io/static/docs/cod_municipios.csv",
-                      col_types = c("cccccc")) |>
+ids_ibge <- read_csv(
+  "https://raw.githubusercontent.com/GV-CEPESP/cepespdata/refs/heads/main/tabelas_auxiliares/dados/codigo_municipio_ibge_tse.csv",
+  col_types = c("cccccccccccc")) |>
   select(UF, COD_MUN_TSE, COD_MUN_IBGE) |>
   distinct()
 
@@ -221,12 +222,14 @@ nikolas_2020_final |>
     title = "Votação de Nikolas Ferreira (Vereador, 2020)",
     subtitle = "Bairros do município de Belo Horizonte",
     caption = "\nFonte: produzido por Gelape e Silva, a partir de dados do TSE e da PBH.\n",
-    fill = "Votos\n") +
+    fill = "Votos") +
   annotation_scale(
     location = "br", width_hint = 0.3) +
   scale_fill_brewer(palette = "Greens") +
-  theme_void() +
   theme(
+    panel.background = element_rect(fill = "white"),
+    axis.text = element_blank(),
+    axis.ticks = element_blank(),
     plot.title = element_text(hjust = 0.5, size = 14),
     plot.subtitle = element_text(hjust = 0.5, size = 12),
     plot.caption = element_text(hjust = 0.5, size = 10),
